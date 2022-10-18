@@ -31,20 +31,20 @@ class Main {
     int i = 0;
     List<Interval> mergedIntervals = new ArrayList<>();
 
-    //skip and add to output all intervals comes before new interval
+    // skip and add to output all intervals comes before new interval
     while (i < intervals.size() && intervals.get(i).end < newInterval.start) {
       mergedIntervals.add(intervals.get(i++));
     }
-//merge all intervals that overlaps with new interval
+    // merge all intervals that overlaps with new interval
     while (i < intervals.size() && intervals.get(i).start <= newInterval.end) {
       newInterval.start = Math.min(intervals.get(i).start, newInterval.start);
       newInterval.end = Math.max(intervals.get(i).end, newInterval.end);
       i++;
     }
-    //add new interval
+    // add new interval
     mergedIntervals.add(newInterval);
 
-    //add all remaining intervals to output
+    // add all remaining intervals to output
     while (i < intervals.size()) {
       mergedIntervals.add(intervals.get(i++));
 
